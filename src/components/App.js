@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import Header from "./Header";
 import Register from "./auth/Register";
 import Logout from "./auth/Logout";
+import Login from "./auth/Login";
 
 class App extends React.Component {
   /*
@@ -24,6 +25,9 @@ class App extends React.Component {
           </Route>
           <Route path="/logout" exact>
             <Logout />
+          </Route>
+          <Route path="/login" exact>
+            <Login />
           </Route>
           <div>HI</div>
         </BrowserRouter>
