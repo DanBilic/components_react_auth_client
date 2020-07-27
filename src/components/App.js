@@ -29,7 +29,6 @@ class App extends React.Component {
           <Route path="/login" exact>
             <Login />
           </Route>
-          <div>HI</div>
         </BrowserRouter>
       </div>
     );

@@ -4,6 +4,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
+import { Segment, Button, Form, Icon, Grid, Header } from "semantic-ui-react";
+
 import { register } from "../../actions";
 
 class Register extends Component {
@@ -16,24 +18,69 @@ class Register extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <label>Name</label>
-          <Field name="name" type="text" component="input" />
-          <label>Email</label>
-          <Field name="email" type="text" component="input" />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
-          <Field name="password" type="password" component="input" />
-        </fieldset>
-        <fieldset>
-          <label>Role</label>
-          <Field name="role" type="text" component="input" />
-        </fieldset>
-        <div>{this.props.errorMessage}</div>
-        <button>Register!</button>
-      </form>
+      <Segment>
+        <Grid style={{ marginTop: "40px" }}>
+          <Grid.Column width={5}></Grid.Column>
+          <Grid.Column width={6}>
+            <Header as="h2" icon textAlign="center">
+              <Icon name="star" circular />
+              <Header.Content>Register</Header.Content>
+            </Header>
+            <Form onSubmit={handleSubmit(this.onSubmit)} size="large">
+              <Form.Field>
+                <label>Name</label>
+                <Field
+                  name="name"
+                  type="text"
+                  component="input"
+                  placeholder="Name..."
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Email</label>
+                <Field
+                  name="email"
+                  type="text"
+                  component="input"
+                  placeholder="Email..."
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <Field
+                  name="password"
+                  type="password"
+                  component="input"
+                  placeholder="Password..."
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Role</label>
+                <Field
+                  name="role"
+                  type="text"
+                  component="input"
+                  placeholder="Role..."
+                  style={{ marginBottom: "30px" }}
+                />
+              </Form.Field>
+              <div>{this.props.errorMessage}</div>
+              <Button
+                fluid
+                animated
+                color="violet"
+                style={{ marginBottom: "120px" }}
+              >
+                <Button.Content visible>Register</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="check" />
+                </Button.Content>
+              </Button>
+            </Form>
+          </Grid.Column>
+          <Grid.Column width={5}></Grid.Column>
+        </Grid>
+      </Segment>
     );
   }
 }

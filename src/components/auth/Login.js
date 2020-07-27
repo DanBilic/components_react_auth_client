@@ -4,6 +4,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
+import { Segment, Button, Form, Icon, Grid, Header } from "semantic-ui-react";
+
 import { login } from "../../actions";
 
 class Login extends Component {
@@ -16,18 +18,50 @@ class Login extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <label>Email</label>
-          <Field name="email" type="text" component="input" />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
-          <Field name="password" type="password" component="input" />
-        </fieldset>
-        <div>{this.props.errorMessage}</div>
-        <button>login!</button>
-      </form>
+      <Segment>
+        <Grid style={{ marginTop: "40px" }}>
+          <Grid.Column width={5}></Grid.Column>
+          <Grid.Column width={6}>
+            <Header as="h2" icon textAlign="center">
+              <Icon name="key" circular />
+              <Header.Content>Login</Header.Content>
+            </Header>
+            <Form onSubmit={handleSubmit(this.onSubmit)} size="large">
+              <Form.Field>
+                <label>Email</label>
+                <Field
+                  name="email"
+                  type="text"
+                  component="input"
+                  placeholder="Email..."
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <Field
+                  name="password"
+                  type="password"
+                  component="input"
+                  placeholder="Password..."
+                />
+              </Form.Field>
+              <div>{this.props.errorMessage}</div>
+              <Button
+                fluid
+                animated
+                color="orange"
+                style={{ marginBottom: "120px" }}
+              >
+                <Button.Content visible>Login</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="check" />
+                </Button.Content>
+              </Button>
+            </Form>
+          </Grid.Column>
+          <Grid.Column width={5}></Grid.Column>
+        </Grid>
+      </Segment>
     );
   }
 }
