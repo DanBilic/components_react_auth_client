@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
+
 import { register } from "../../actions";
 
 class Register extends Component {
   onSubmit = (formProps) => {
     console.log(formProps);
-    this.props.register(formProps);
+    this.props.register(formProps, this.props.history);
   };
   render() {
+    //console.log("PRPS", this.props);
     const { handleSubmit } = this.props;
 
     return (
@@ -28,13 +31,19 @@ class Register extends Component {
           <label>Role</label>
           <Field name="role" type="text" component="input" />
         </fieldset>
+        <div>{this.props.errorMessage}</div>
         <button>Register!</button>
       </form>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.errorMessage };
+}
+
 export default compose(
-  connect(null, { register }),
-  reduxForm({ form: "register" })
+  connect(mapStateToProps, { register }),
+  reduxForm({ form: "register" }),
+  withRouter
 )(Register);
