@@ -1,8 +1,9 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_PAWS, CREATE_PAW } from "./types";
+import { AUTH_USER } from "./types";
 
-export const fetchUser = () => async (dispatch) => {
-  const res = await axios.get("/api/v1/auth/current_user");
+export const register = (formValues) => async (dispatch) => {
+  const res = await axios.post("/api/v1/auth/register", formValues);
+  console.log("REGISTER RESPONSE", res);
 
-  dispatch({ type: FETCH_USER, payload: res.data });
+  dispatch({ type: AUTH_USER, payload: res.data });
 };

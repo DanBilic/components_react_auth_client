@@ -1,10 +1,15 @@
-import { FETCH_USER } from "../actions/types";
+import { AUTH_USER } from "../actions/types";
+
+const INITIAL_STATE = {
+  autheticated: "",
+  errorMessage: "",
+};
 
 export default function (state = null, action) {
   //console.log(action);
 
   switch (action.type) {
-    case FETCH_USER:
+    case AUTH_USER:
       return action.payload || false;
 
     default:

@@ -1,0 +1,40 @@
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { register } from "../../actions";
+
+class Register extends Component {
+  onSubmit = (formProps) => {
+    console.log(formProps);
+    this.props.register(formProps);
+  };
+  render() {
+    const { handleSubmit } = this.props;
+
+    return (
+      <form onSubmit={handleSubmit(this.onSubmit)}>
+        <fieldset>
+          <label>Name</label>
+          <Field name="name" type="text" component="input" />
+          <label>Email</label>
+          <Field name="email" type="text" component="input" />
+        </fieldset>
+        <fieldset>
+          <label>Password</label>
+          <Field name="password" type="password" component="input" />
+        </fieldset>
+        <fieldset>
+          <label>Role</label>
+          <Field name="role" type="text" component="input" />
+        </fieldset>
+        <button>Register!</button>
+      </form>
+    );
+  }
+}
+
+export default compose(
+  connect(null, { register }),
+  reduxForm({ form: "register" })
+)(Register);

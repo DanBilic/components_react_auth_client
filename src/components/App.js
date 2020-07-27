@@ -3,6 +3,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 //import { fetchUser } from "../actions/";
 
+import Header from "./Header";
+import Register from "./auth/Register";
+
 class App extends React.Component {
   /*
   componentDidMount() {
@@ -14,6 +17,10 @@ class App extends React.Component {
     return (
       <div className="ui container">
         <BrowserRouter>
+          <Header />
+          <Route path="/register" exact>
+            <Register />
+          </Route>
           <div>HI</div>
         </BrowserRouter>
       </div>
