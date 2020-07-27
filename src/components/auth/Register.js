@@ -4,7 +4,15 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import { Segment, Button, Form, Icon, Grid, Header } from "semantic-ui-react";
+import {
+  Segment,
+  Button,
+  Form,
+  Icon,
+  Grid,
+  Header,
+  Message,
+} from "semantic-ui-react";
 
 import { register } from "../../actions";
 
@@ -22,11 +30,11 @@ class Register extends Component {
         <Grid style={{ marginTop: "40px" }}>
           <Grid.Column width={5}></Grid.Column>
           <Grid.Column width={6}>
-            <Header as="h2" icon textAlign="center">
-              <Icon name="star" circular />
+            <Header as="h3" icon textAlign="center">
+              <Icon name="sign-in" />
               <Header.Content>Register</Header.Content>
             </Header>
-            <Form onSubmit={handleSubmit(this.onSubmit)} size="large">
+            <Form error onSubmit={handleSubmit(this.onSubmit)} size="large">
               <Form.Field>
                 <label>Name</label>
                 <Field
@@ -64,7 +72,15 @@ class Register extends Component {
                   style={{ marginBottom: "30px" }}
                 />
               </Form.Field>
-              <div>{this.props.errorMessage}</div>
+              {this.props.errorMessage ? (
+                <Message
+                  error
+                  header="Input Error"
+                  content={this.props.errorMessage}
+                />
+              ) : (
+                <div></div>
+              )}
               <Button
                 fluid
                 animated

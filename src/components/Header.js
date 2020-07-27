@@ -32,12 +32,16 @@ class Header extends Component {
           name="/register"
           active={activeItem === "/register"}
           onClick={this.handleItemClick}
-        />
+        >
+          <div className="ui violet button">Register</div>
+        </Menu.Item>
         <Menu.Item
           name="/login"
           active={activeItem === "/login"}
           onClick={this.handleItemClick}
-        />
+        >
+          <div className="ui purple button">Login</div>
+        </Menu.Item>
       </Menu.Menu>
     );
   }
@@ -46,6 +50,7 @@ class Header extends Component {
     return (
       <Menu pointing>
         <Menu.Item
+          color="violet"
           name="/"
           active={activeItem === "/"}
           onClick={this.handleItemClick}

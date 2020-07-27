@@ -3,6 +3,10 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 //import { fetchUser } from "../actions/";
 
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 import Header from "./Header";
 import Register from "./auth/Register";
 import Logout from "./auth/Logout";
@@ -18,6 +22,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <BrowserRouter>
           <Header />
           <Route path="/register" exact>
